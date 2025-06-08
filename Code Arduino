@@ -1,0 +1,21 @@
+const int botao = 2;
+bool estadoAnterior = 0;
+bool estadoAtual = 0;
+
+void setup() {
+  pinMode(botao, INPUT);  // Usa resistor interno
+  Serial.begin(9600);
+}
+
+void loop() {
+  estadoAtual = digitalRead(botao);
+
+  // Detecta transição de HIGH para LOW (botão pressionado)
+  if (estadoAnterior == 0 && estadoAtual == 1) {
+    Serial.println("chamar_garcom");
+    delay(300); // debounce simples
+    estadoAnterior = estadoAtual;
+  }
+
+  
+}
