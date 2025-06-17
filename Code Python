@@ -1,12 +1,15 @@
 import serial
-
 porta = "COM3"
 arduino = serial.Serial(porta, 9600)
 
-print("Aguardando chamada do botão...")
+print("Aguardando chamada dos botões...")
 
 while True:
     if arduino.in_waiting:
         mensagem = arduino.readline().decode('utf-8').strip()
-        if mensagem == "chamar_garcom":
-            print("🔔 Garçom chamado!")
+
+        if mensagem == "chamar_garcom_1":
+            print("🔔 Garçom 1 chamado!")
+
+        elif mensagem == "chamar_garcom_2":
+            print("🔔 Garçom 2 chamado!")
